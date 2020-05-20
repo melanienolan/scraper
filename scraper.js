@@ -17,7 +17,10 @@ const url =
 
     const fullItems = await Promise.all(
       items.map(async (item) => ({
-        title: await item.$eval(".p13n-sc-truncated", (node) => node.title),
+        title: await item.$eval(
+          ".zg-text-center-align img",
+          (node) => node.alt
+        ),
         image: await item.$eval(
           ".zg-text-center-align img",
           (node) => node.src
@@ -34,9 +37,9 @@ const url =
       }))
     );
 
-    fs.writeFile("testing.json", JSON.stringify(fullItems, null, 2), (err) => {
+    fs.writeFile("data.json", JSON.stringify(fullItems, null, 2), (err) => {
       if (err) throw err;
-      console.log("Items written in file");
+      console.log("Data written to data.json");
     });
 
     await browser.close();
