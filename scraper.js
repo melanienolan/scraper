@@ -17,7 +17,7 @@ const url =
 
     const fullItems = await Promise.all(
       items.map(async (item) => ({
-        title: await item.$eval(".p13n-sc-truncated", (node) => node.innerText),
+        title: await item.$eval(".p13n-sc-truncated", (node) => node.title),
         image: await item.$eval(
           ".zg-text-center-align img",
           (node) => node.src
